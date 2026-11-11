@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UnisKolar – Announcements</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Dashboard.css">
+<link rel="stylesheet" href="Announcements.css">
+</head>
+<body>
+
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="currentColor"/></symbol>
+  <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M3 10v4h3l7 4V6L6 10zm14-3v10a4 4 0 0 0 0-10z" fill="currentColor"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.500a2.500 2.500 0 0 1 0 5z" fill="currentColor"/></symbol>
+  <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M12 19.500a1.800 1.800 0 1 0 0-3.600 1.800 1.800 0 0 0 0 3.600zM2 8.800a15 15 0 0 1 20 0l-1.800 1.900a12.400 12.400 0 0 0-16.400 0zm4 4a9.300 9.300 0 0 1 12 0l-1.800 1.900a6.700 6.700 0 0 0-8.400 0z" fill="currentColor"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V11h4v9zm6 0V4h4v16zm6 0v-6h4v6z" fill="currentColor"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M12 2l9 4.500v11L12 22l-9-4.500v-11zm0 2.200L6 7.200l6 3 6-3zM5 8.900v7.400l6 3v-7.400zm14 0l-6 3v7.400l6-3z" fill="currentColor"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 8V7a6 6 0 0 1 12 0v1h3l-1 14H4L3 8zm2 0h8V7a4 4 0 0 0-8 0z" fill="currentColor"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2zM5 10h14v10H5zm2 2v2h3v-2zm5 0v2h3v-2z" fill="currentColor"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm8 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM9 13c-3.500 0-7 1.700-7 4.500V20h14v-2.500C16 14.700 12.500 13 9 13zm8.500.2c2.600.4 4.500 1.900 4.500 4.300V20h-4v-2.500c0-1.700-.6-3.200-1.800-4.300z" fill="currentColor"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.500" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><path d="M10.500 3a7.500 7.500 0 1 0 4.500 13.500l4.800 4.800 1.400-1.400-4.800-4.800A7.500 7.500 0 0 0 10.500 3zm0 2a5.500 5.500 0 1 1 0 11 5.500 5.500 0 0 1 0-11z" fill="currentColor"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M12 22a2.500 2.500 0 0 0 2.400-2h-4.800A2.500 2.500 0 0 0 12 22zm7-6V11a7 7 0 0 0-5-6.700V3a2 2 0 0 0-4 0v1.300A7 7 0 0 0 5 11v5l-2 2v1h18v-1z" fill="currentColor"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h5v-2H5V5h5zm6.500 4.500L15 9l2 2H9v2h8l-2 2 1.500 1.500L21 12z" fill="currentColor"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z" fill="currentColor"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.500" stroke-linecap="round"/></symbol>
+</svg>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4l20 10v4H4v-4zM8 22h6v16H8zm13 0h6v16h-6zm13 0h6v16h-6zM4 41h40v4H4z" fill="#fff"/></svg>
+      <h1>UnisKolar</h1>
+      <p>Your University, One Platform.</p>
+    </div>
+
+    <nav class="nav" aria-label="Main">
+      <a href="Dashboard.html" class="nav-item"><svg><use href="#i-home"/></svg>Home</a>
+      <a href="Announcements.html" class="nav-item active"><svg><use href="#i-megaphone"/></svg>Announcements</a>
+      <a href="Map.html" class="nav-item"><svg><use href="#i-pin"/></svg>Campus Map</a>
+      <a href="#" class="nav-item"><svg><use href="#i-wifi"/></svg>Wi-Fi Info</a>
+      <a href="#" class="nav-item"><svg><use href="#i-chart"/></svg>Statistics</a>
+      <a href="LostFound.html" class="nav-item"><svg><use href="#i-box"/></svg>Lost &amp; Found</a>
+      <a href="#" class="nav-item"><svg><use href="#i-bag"/></svg>Shop</a>
+      <a href="#" class="nav-item"><svg><use href="#i-calendar"/></svg>Events</a>
+      <a href="#" class="nav-item"><svg><use href="#i-users"/></svg>Student Services</a>
+      <a href="#" class="nav-item"><svg><use href="#i-chevron"/></svg>More</a>
+    </nav>
+
+    <div class="sidebar-foot">
+      <div class="profile">
+        <div class="avatar">BP</div>
+        <div>
+          <strong>Benedict Privado</strong>
+          <span>BSCS • 1-1</span>
+        </div>
+      </div>
+      <button class="logout"><svg><use href="#i-logout"/></svg>Log Out</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <header class="topbar">
+      <label class="search">
+        <svg><use href="#i-search"/></svg>
+        <input type="search" placeholder="Search anything… (e.g. map, services, events)">
+      </label>
+      <button class="bell" id="bell" aria-label="Notifications"><svg><use href="#i-bell"/></svg><span id="bellCount">0</span></button>
+      <span class="divider"></span>
+      <div class="school">
+        <div class="seal">PLM</div>
+        <div>
+          <strong>PLM</strong>
+          <span>Pamantasan ng Lungsod ng Maynila</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="page-title an-title">
+      <div>
+        <h2>Announcements</h2>
+        <p>Stay updated on class suspensions, events, and campus notices.</p>
+      </div>
+      <div class="an-actions">
+        <button class="btn btn-ghost" id="staffToggle" aria-pressed="false">Staff view: Off</button>
+        <button class="btn" id="newBtn" hidden><svg><use href="#i-plus"/></svg>New Announcement</button>
+      </div>
+    </div>
+
+    <section class="card an-filters">
+      <label class="an-field">
+        <span>Search</span>
+        <input type="search" id="q" placeholder="Search title or content">
+      </label>
+      <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+    </section>
+
+    <p class="an-count" id="count" aria-live="polite"></p>
+    <section class="card an-list"><ul class="news an-news" id="list"></ul></section>
+    <div class="an-empty" id="empty" hidden>
+      <strong>No announcements found.</strong>
+      <span>Try a different keyword or category.</span>
+    </div>
+  </div>
+</div>
+
+<!-- Detail dialog -->
+<dialog id="detailDlg" class="dlg dlg-wide">
+  <header class="dlg-head">
+    <h3 id="dTitle"></h3>
+    <button type="button" class="x" data-close aria-label="Close">×</button>
+  </header>
+  <div class="dlg-body" id="dBody"></div>
+  <footer class="dlg-foot" id="dFoot"></footer>
+</dialog>
+
+<!-- Post / edit dialog (staff) -->
+<dialog id="formDlg" class="dlg">
+  <form id="annForm" method="dialog" novalidate>
+    <header class="dlg-head">
+      <h3 id="formTitle">New Announcement</h3>
+      <button type="button" class="x" data-close aria-label="Close">×</button>
+    </header>
+    <div class="dlg-body">
+      <label class="an-field"><span>Title *</span><input name="title" required maxlength="100" placeholder="e.g. No Classes on November 21, 2026"></label>
+      <label class="an-field"><span>Category *</span><select name="category" required></select></label>
+      <label class="an-field"><span>Message *</span><textarea name="body" required rows="6" maxlength="1500" placeholder="Write the full announcement. Press Enter for a new paragraph."></textarea></label>
+      <label class="an-check"><input type="checkbox" name="pinned"> Pin to the top</label>
+      <p class="err" id="formErr" role="alert" hidden></p>
+    </div>
+    <footer class="dlg-foot">
+      <button type="button" class="btn btn-ghost" data-close>Cancel</button>
+      <button type="submit" class="btn">Publish</button>
+    </footer>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="Announcements.js"></script>
+</body>
+</html>

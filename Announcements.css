@@ -1,0 +1,90 @@
+/* Announcements page – loads after Dashboard.css.
+   Button, dialog, field and toast styles are repeated from LostFound.css so this page works on its own.
+   (Later you can move the shared bits into one Common.css.) */
+
+[hidden] { display: none !important; }
+
+.an-title { margin: 20px 0 14px; display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.an-title h2 { font-size: 28px; font-weight: 800; letter-spacing: -.5px; }
+.an-title p { color: var(--muted); }
+.an-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 0; }
+.btn svg { width: 16px; height: 16px; }
+.btn-red { background: #d6334a; }
+.btn-red:hover { background: #b5273b; }
+.btn-ghost { background: #fff; color: var(--indigo-700); box-shadow: inset 0 0 0 1.5px var(--line); }
+.btn-ghost:hover { background: var(--indigo-100); }
+.btn-ghost[aria-pressed="true"] { background: var(--indigo-100); box-shadow: inset 0 0 0 1.5px var(--indigo-600); }
+
+/* ---------- Filters ---------- */
+.an-filters { display: flex; flex-direction: column; gap: 14px; padding: 16px 20px; }
+.an-field { display: flex; flex-direction: column; gap: 5px; }
+.an-field > span { font-size: 12px; font-weight: 600; color: var(--muted); }
+.an-field input, .an-field select, .an-field textarea {
+  font: inherit; color: var(--ink); background: #fff;
+  border: 1.5px solid var(--line); border-radius: 10px; padding: 10px 12px; width: 100%;
+}
+.an-field textarea { resize: vertical; }
+.an-field input:focus, .an-field select:focus, .an-field textarea:focus { outline: 0; border-color: var(--indigo-600); box-shadow: 0 0 0 3px rgba(82, 64, 214, .15); }
+.an-check { display: flex; align-items: center; gap: 8px; font-weight: 500; }
+.an-check input { width: 18px; height: 18px; accent-color: var(--indigo-600); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { padding: 7px 16px; border-radius: 20px; font-weight: 600; font-size: 13px; background: var(--bg); color: var(--muted); }
+.chip:hover { background: var(--indigo-100); color: var(--indigo-700); }
+.chip.on { background: var(--indigo-600); color: #fff; }
+
+.an-count { margin: 14px 4px 10px; color: var(--muted); font-size: 13px; }
+
+/* ---------- List ---------- */
+.an-list { padding: 6px 20px; }
+.an-news li { padding: 14px 0; cursor: pointer; border-radius: 10px; }
+.an-news li:hover .news-body strong { color: var(--indigo-600); }
+.an-news li:focus-visible { outline-offset: -2px; }
+.an-news .news-body p { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; }
+.an-news .thumb { width: 110px; height: 62px; flex: none; }
+.an-news .thumb svg { width: 28px; height: 28px; }
+.an-news .tags { display: flex; gap: 6px; align-items: center; margin-bottom: 3px; flex-wrap: wrap; }
+.an-news .tags strong { display: inline; font-size: 14.5px; }
+
+.tag { font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 20px; background: var(--indigo-100); color: var(--indigo-700); }
+.tag-new { background: #8b5cf6; color: #fff; }
+.tag-pin { background: #fdeed8; color: #b0701b; }
+.tag-General { background: #ebe8ff; color: #3f2fb0; }
+.tag-Academic { background: #dfeafc; color: #2c5fc4; }
+.tag-Events { background: #fde3e6; color: #b5273b; }
+.tag-Maintenance { background: #dcf1f6; color: #1b8aa6; }
+.tag-Urgent { background: #d6334a; color: #fff; }
+
+.c-General { background: linear-gradient(135deg, #2a2d6b, #6d5bd0); }
+.c-Academic { background: linear-gradient(135deg, #2c5fc4, #7fb0f5); }
+.c-Events { background: linear-gradient(135deg, #3b1a58, #b5307a); }
+.c-Maintenance { background: linear-gradient(135deg, #3d8eea, #8fd0ff); }
+.c-Urgent { background: linear-gradient(135deg, #a31b2e, #f0586c); }
+
+.an-empty { text-align: center; padding: 48px 16px; color: var(--muted); display: flex; flex-direction: column; gap: 6px; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); }
+.an-empty strong { color: var(--ink); font-size: 16px; }
+
+/* ---------- Dialogs ---------- */
+.dlg { margin: auto; border: 0; border-radius: 20px; padding: 0; width: min(560px, calc(100vw - 28px)); max-height: calc(100vh - 40px); box-shadow: 0 24px 60px rgba(28, 27, 51, .35); color: var(--ink); font-family: inherit; }
+.dlg-wide { width: min(680px, calc(100vw - 28px)); }
+.dlg::backdrop { background: rgba(28, 27, 51, .55); }
+.dlg > form { display: flex; flex-direction: column; max-height: calc(100vh - 40px); }
+.dlg-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 22px; border-bottom: 1px solid var(--line); }
+.dlg-head h3 { font-size: 19px; font-weight: 800; }
+.dlg .x { font-size: 26px; line-height: 1; color: var(--muted); padding: 0 6px; }
+.dlg-body { padding: 18px 22px; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; }
+.dlg-foot { padding: 14px 22px; border-top: 1px solid var(--line); display: flex; justify-content: flex-end; gap: 10px; flex-wrap: wrap; }
+.dlg-foot:empty { display: none; }
+.err { color: #d6334a; font-weight: 600; font-size: 13px; }
+.d-meta { color: var(--muted); font-size: 13px; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
+.d-text { display: flex; flex-direction: column; gap: 12px; line-height: 1.6; }
+
+.toast { position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 12px 22px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.25); z-index: 50; font-weight: 500; max-width: calc(100vw - 28px); }
+
+@media (max-width: 700px) {
+  .an-news .thumb { display: none; }
+  .an-news time { display: none; }
+  .an-actions .btn { flex: 1; justify-content: center; }
+}
