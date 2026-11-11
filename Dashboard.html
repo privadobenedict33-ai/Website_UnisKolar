@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UnisKolar – Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Dashboard.css">
+</head>
+<body>
+
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="currentColor"/></symbol>
+  <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M3 10v4h3l7 4V6L6 10zm14-3v10a4 4 0 0 0 0-10z" fill="currentColor"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.500a2.500 2.500 0 0 1 0 5z" fill="currentColor"/></symbol>
+  <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M12 19.500a1.800 1.800 0 1 0 0-3.600 1.800 1.800 0 0 0 0 3.600zM2 8.800a15 15 0 0 1 20 0l-1.800 1.900a12.400 12.400 0 0 0-16.400 0zm4 4a9.300 9.300 0 0 1 12 0l-1.800 1.900a6.700 6.700 0 0 0-8.400 0z" fill="currentColor"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V11h4v9zm6 0V4h4v16zm6 0v-6h4v6z" fill="currentColor"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M12 2l9 4.500v11L12 22l-9-4.500v-11zm0 2.200L6 7.200l6 3 6-3zM5 8.900v7.400l6 3v-7.400zm14 0l-6 3v7.400l6-3z" fill="currentColor"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 8V7a6 6 0 0 1 12 0v1h3l-1 14H4L3 8zm2 0h8V7a4 4 0 0 0-8 0z" fill="currentColor"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2zM5 10h14v10H5zm2 2v2h3v-2zm5 0v2h3v-2z" fill="currentColor"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm8 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM9 13c-3.500 0-7 1.700-7 4.500V20h14v-2.500C16 14.700 12.500 13 9 13zm8.500.2c2.600.4 4.500 1.900 4.500 4.300V20h-4v-2.500c0-1.700-.6-3.200-1.800-4.300z" fill="currentColor"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.500" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><path d="M10.500 3a7.500 7.500 0 1 0 4.500 13.500l4.800 4.800 1.400-1.400-4.800-4.800A7.500 7.500 0 0 0 10.500 3zm0 2a5.500 5.500 0 1 1 0 11 5.500 5.500 0 0 1 0-11z" fill="currentColor"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M12 22a2.500 2.500 0 0 0 2.400-2h-4.800A2.500 2.500 0 0 0 12 22zm7-6V11a7 7 0 0 0-5-6.700V3a2 2 0 0 0-4 0v1.300A7 7 0 0 0 5 11v5l-2 2v1h18v-1z" fill="currentColor"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h5v-2H5V5h5zm6.500 4.500L15 9l2 2H9v2h8l-2 2 1.500 1.500L21 12z" fill="currentColor"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z" fill="currentColor"/></symbol>
+</svg>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4l20 10v4H4v-4zM8 22h6v16H8zm13 0h6v16h-6zm13 0h6v16h-6zM4 41h40v4H4z" fill="#fff"/></svg>
+      <h1>UnisKolar</h1>
+      <p>Unified-Sity Platform</p>
+    </div>
+
+    <nav class="nav" aria-label="Main">
+      <a href="#" class="nav-item active"><svg><use href="#i-home"/></svg>Home</a>
+      <a href="#" class="nav-item"><svg><use href="#i-megaphone"/></svg>Announcements</a>
+      <a href="Map.html" class="nav-item"><svg><use href="#i-pin"/></svg>Campus Map</a>
+      <a href="#" class="nav-item"><svg><use href="#i-wifi"/></svg>Wi-Fi Info</a>
+      <a href="#" class="nav-item"><svg><use href="#i-chart"/></svg>Statistics</a>
+      <a href="#" class="nav-item"><svg><use href="#i-box"/></svg>Lost &amp; Found</a>
+      <a href="#" class="nav-item"><svg><use href="#i-bag"/></svg>Shop</a>
+      <a href="#" class="nav-item"><svg><use href="#i-calendar"/></svg>Events</a>
+      <a href="#" class="nav-item"><svg><use href="#i-users"/></svg>Student Services</a>
+      <a href="#" class="nav-item"><svg><use href="#i-chevron"/></svg>More</a>
+    </nav>
+
+    <div class="sidebar-foot">
+      <div class="profile">
+        <div class="avatar">BP</div>
+        <div>
+          <strong>Benedict Privado</strong>
+          <span>BSCS • 1-1</span>
+        </div>
+      </div>
+      <button class="logout"><svg><use href="#i-logout"/></svg>Log Out</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <header class="topbar">
+      <label class="search">
+        <svg><use href="#i-search"/></svg>
+        <input type="search" placeholder="Search anything… (e.g. map, services, events)">
+      </label>
+      <button class="bell" aria-label="Notifications, 3 new"><svg><use href="#i-bell"/></svg><span>3</span></button>
+      <span class="divider"></span>
+      <div class="school">
+        <div class="seal">PLM</div>
+        <div>
+          <strong>PLM</strong>
+          <span>Pamantasan ng Lungsod ng Maynila</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="hello">Good morning,</p>
+        <h2>Benedict!</h2>
+        <p class="sub">Welcome back to Pamantasan ng Lungsod ng Maynila.</p>
+      </div>
+    </section>
+
+    <div class="grid">
+
+      <div class="col-main">
+
+        <section class="stats">
+          <article class="stat s-purple">
+            <span class="ico"><svg><use href="#i-wifi"/></svg></span>
+            <div><small>Campus Wi-Fi</small><strong class="ok">Connected</strong></div>
+          </article>
+          <article class="stat s-blue">
+            <span class="ico"><svg><use href="#i-calendar"/></svg></span>
+            <div><small>Today's Date</small><strong>Nov 11, 2026</strong><small>Wed</small></div>
+          </article>
+          <article class="stat s-green">
+            <span class="ico"><svg><use href="#i-chart"/></svg></span>
+            <div><small>Total Students</small><strong>~ 16,000+</strong></div>
+          </article>
+          <a href="Map.html" class="stat s-orange">
+            <span class="ico"><svg><use href="#i-pin"/></svg></span>
+            <div><small>Campus Map</small><strong>Explore <svg class="inline"><use href="#i-arrow"/></svg></strong></div>
+          </a>
+        </section>
+
+        <section class="card">
+          <div class="card-head">
+            <h3><svg><use href="#i-megaphone"/></svg>Announcements</h3>
+            <a href="#" class="link">See All <svg><use href="#i-arrow"/></svg></a>
+          </div>
+          <ul class="news">
+            <li>
+              <div class="thumb t1"><em>New</em></div>
+              <div class="news-body">
+                <strong>No Classes on November 15, 2026 (Saturday)</strong>
+                <p>Due to the upcoming university event, classes are suspended on…</p>
+              </div>
+              <time>Nov 9, 2026</time>
+            </li>
+            <li>
+              <div class="thumb t2">PLM DAY</div>
+              <div class="news-body">
+                <strong>PLM Day 2026: Unity in Service</strong>
+                <p>Join us this November at the PLM Quadrangle!</p>
+              </div>
+              <time>Nov 7, 2026</time>
+            </li>
+            <li>
+              <div class="thumb t3"><svg><use href="#i-wifi"/></svg></div>
+              <div class="news-body">
+                <strong>Wi-Fi Maintenance Notice</strong>
+                <p>Campus Wi-Fi will be temporarily unavailable on Nov 12, 2026…</p>
+              </div>
+              <time>Nov 6, 2026</time>
+            </li>
+          </ul>
+        </section>
+
+        <div class="row-2">
+          <section class="card">
+            <div class="card-head">
+              <h3><svg><use href="#i-bolt"/></svg>Quick Access</h3>
+            </div>
+            <div class="quick">
+              <a href="#" class="q q1"><svg><use href="#i-megaphone"/></svg>Announcements</a>
+              <a href="Map.html" class="q q2"><svg><use href="#i-pin"/></svg>Campus Map</a>
+              <a href="#" class="q q3"><svg><use href="#i-chart"/></svg>Statistics</a>
+              <a href="#" class="q q4"><svg><use href="#i-wifi"/></svg>Wi-Fi Info</a>
+              <a href="#" class="q q5"><svg><use href="#i-box"/></svg>Lost &amp; Found</a>
+              <a href="#" class="q q6"><svg><use href="#i-bag"/></svg>Shop</a>
+              <a href="#" class="q q7"><svg><use href="#i-calendar"/></svg>Events</a>
+              <a href="#" class="q q8"><svg><use href="#i-users"/></svg>Student Services</a>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <h3><svg><use href="#i-calendar"/></svg>Upcoming Events</h3>
+              <a href="#" class="link">See All <svg><use href="#i-arrow"/></svg></a>
+            </div>
+            <div class="event">
+              <div class="event-img"></div>
+              <div>
+                <h4>PLM Day 2026</h4>
+                <p>Nov 21, 2026</p>
+                <p>PLM Quadrangle</p>
+                <button class="btn">View Details</button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="col-side">
+        <section class="card">
+          <div class="card-head">
+            <h3><svg><use href="#i-calendar"/></svg>My Schedule</h3>
+            <a href="#" class="link">See Calendar <svg><use href="#i-arrow"/></svg></a>
+          </div>
+          <ul class="sched">
+            <li class="d-blue"><strong>CS 101 – Data Structures</strong><span>8:00 AM – 10:00 AM | Room CS-201</span></li>
+            <li class="d-red"><strong>Math 102 – Calculus I</strong><span>1:00 PM – 3:00 PM | Room M-102</span></li>
+            <li class="d-amber"><strong>PE 2 – Physical Fitness</strong><span>4:00 PM – 6:00 PM | Gymnasium</span></li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <div class="card-head">
+            <h3><svg><use href="#i-chart"/></svg>Wi-Fi Status</h3>
+            <span class="badge">Online</span>
+          </div>
+          <p class="signal-label">Strong Signal</p>
+          <div class="bar"><span style="width:68%"></span></div>
+        </section>
+
+        <section class="card">
+          <div class="card-head">
+            <h3><svg><use href="#i-pin"/></svg>Campus Map</h3>
+            <a href="Map.html" class="link">Open Map <svg><use href="#i-arrow"/></svg></a>
+          </div>
+          <div class="map">
+            <svg class="map-pin"><use href="#i-pin"/></svg>
+            <div class="zoom"><button aria-label="Zoom in">+</button><button aria-label="Zoom out">−</button></div>
+          </div>
+        </section>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
