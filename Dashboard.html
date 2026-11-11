@@ -1,18 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>UnisKolar – Dashboard</title>
+<title>UnisKolar – Lost &amp; Found</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="Dashboard.css">
+<link rel="stylesheet" href="LostFound.css">
 </head>
 <body>
 
-<!-- Icon sprite and Joezzer Reyes -->
+<!-- Icon sprite -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="currentColor"/></symbol>
   <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M3 10v4h3l7 4V6L6 10zm14-3v10a4 4 0 0 0 0-10z" fill="currentColor"/></symbol>
@@ -29,6 +29,7 @@
   <symbol id="i-logout" viewBox="0 0 24 24"><path d="M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h5v-2H5V5h5zm6.500 4.500L15 9l2 2H9v2h8l-2 2 1.500 1.500L21 12z" fill="currentColor"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z" fill="currentColor"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.500" stroke-linecap="round"/></symbol>
 </svg>
 
 <div class="app">
@@ -38,16 +39,16 @@
     <div class="brand">
       <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4l20 10v4H4v-4zM8 22h6v16H8zm13 0h6v16h-6zm13 0h6v16h-6zM4 41h40v4H4z" fill="#fff"/></svg>
       <h1>UnisKolar</h1>
-      <p>Unified-Sity Platform</p>
+      <p>Your University, One Platform.</p>
     </div>
 
     <nav class="nav" aria-label="Main">
-      <a href="#" class="nav-item active"><svg><use href="#i-home"/></svg>Home</a>
+      <a href="Dashboard.html" class="nav-item"><svg><use href="#i-home"/></svg>Home</a>
       <a href="#" class="nav-item"><svg><use href="#i-megaphone"/></svg>Announcements</a>
       <a href="Map.html" class="nav-item"><svg><use href="#i-pin"/></svg>Campus Map</a>
       <a href="#" class="nav-item"><svg><use href="#i-wifi"/></svg>Wi-Fi Info</a>
       <a href="#" class="nav-item"><svg><use href="#i-chart"/></svg>Statistics</a>
-      <a href="#" class="nav-item"><svg><use href="#i-box"/></svg>Lost &amp; Found</a>
+      <a href="LostFound.html" class="nav-item active"><svg><use href="#i-box"/></svg>Lost &amp; Found</a>
       <a href="#" class="nav-item"><svg><use href="#i-bag"/></svg>Shop</a>
       <a href="#" class="nav-item"><svg><use href="#i-calendar"/></svg>Events</a>
       <a href="#" class="nav-item"><svg><use href="#i-users"/></svg>Student Services</a>
@@ -74,7 +75,7 @@
         <svg><use href="#i-search"/></svg>
         <input type="search" placeholder="Search anything… (e.g. map, services, events)">
       </label>
-      <button class="bell" aria-label="Notifications, 3 new"><svg><use href="#i-bell"/></svg><span>3</span></button>
+      <button class="bell" id="bell" aria-label="Notifications"><svg><use href="#i-bell"/></svg><span id="bellCount">0</span></button>
       <span class="divider"></span>
       <div class="school">
         <div class="seal">PLM</div>
@@ -85,142 +86,97 @@
       </div>
     </header>
 
-    <section class="hero">
+    <div class="page-title lf-title">
       <div>
-        <p class="hello">Good morning,</p>
-        <h2>Benedict!</h2>
-        <p class="sub">Welcome back to Pamantasan ng Lungsod ng Maynila.</p>
+        <h2>Lost &amp; Found</h2>
+        <p>Post found items, search for lost ones, and claim what's yours.</p>
+      </div>
+      <div class="lf-actions">
+        <button class="btn btn-ghost" id="staffToggle" aria-pressed="false">Staff view: Off</button>
+        <button class="btn btn-red" data-open="lost"><svg><use href="#i-plus"/></svg>Report Lost Item</button>
+        <button class="btn" data-open="found"><svg><use href="#i-plus"/></svg>Post Found Item</button>
+      </div>
+    </div>
+
+    <!-- Summary tiles -->
+    <section class="stats lf-stats">
+      <article class="stat s-purple"><span class="ico"><svg><use href="#i-box"/></svg></span><div><small>Unclaimed</small><strong id="sUnclaimed">0</strong></div></article>
+      <article class="stat s-orange"><span class="ico"><svg><use href="#i-bolt"/></svg></span><div><small>Claims pending</small><strong id="sPending">0</strong></div></article>
+      <article class="stat s-green"><span class="ico"><svg><use href="#i-users"/></svg></span><div><small>Returned</small><strong id="sReturned">0</strong></div></article>
+      <article class="stat s-blue"><span class="ico"><svg><use href="#i-search"/></svg></span><div><small>Active lost reports</small><strong id="sLost">0</strong></div></article>
+    </section>
+
+    <!-- Filters -->
+    <section class="card lf-filters">
+      <div class="lf-tabs" role="tablist">
+        <button role="tab" data-tab="found" class="on">Found items</button>
+        <button role="tab" data-tab="lost">Lost reports</button>
+      </div>
+      <div class="lf-controls">
+        <label class="lf-field lf-grow"><span>Search</span><input type="search" id="q" placeholder="e.g. black umbrella, ID, Gusaling Lacson"></label>
+        <label class="lf-field"><span>Category</span>
+          <select id="fCat"><option value="">All</option></select>
+        </label>
+        <label class="lf-field"><span>Status</span>
+          <select id="fStatus"><option value="">All</option></select>
+        </label>
+        <label class="lf-field"><span>Sort</span>
+          <select id="fSort"><option value="new">Newest first</option><option value="old">Oldest first</option></select>
+        </label>
       </div>
     </section>
 
-    <div class="grid">
-
-      <div class="col-main">
-
-        <section class="stats">
-          <article class="stat s-purple">
-            <span class="ico"><svg><use href="#i-wifi"/></svg></span>
-            <div><small>Campus Wi-Fi</small><strong class="ok">Connected</strong></div>
-          </article>
-          <article class="stat s-blue">
-            <span class="ico"><svg><use href="#i-calendar"/></svg></span>
-            <div><small>Today's Date</small><strong>Nov 11, 2026</strong><small>Wed</small></div>
-          </article>
-          <article class="stat s-green">
-            <span class="ico"><svg><use href="#i-chart"/></svg></span>
-            <div><small>Total Students</small><strong>~ 16,000+</strong></div>
-          </article>
-          <a href="Map.html" class="stat s-orange">
-            <span class="ico"><svg><use href="#i-pin"/></svg></span>
-            <div><small>Campus Map</small><strong>Explore <svg class="inline"><use href="#i-arrow"/></svg></strong></div>
-          </a>
-        </section>
-
-        <section class="card">
-          <div class="card-head">
-            <h3><svg><use href="#i-megaphone"/></svg>Announcements</h3>
-            <a href="#" class="link">See All <svg><use href="#i-arrow"/></svg></a>
-          </div>
-          <ul class="news">
-            <li>
-              <div class="thumb t1"><em>New</em></div>
-              <div class="news-body">
-                <strong>No Classes on November 15, 2026 (Saturday)</strong>
-                <p>Due to the upcoming university event, classes are suspended on…</p>
-              </div>
-              <time>Nov 9, 2026</time>
-            </li>
-            <li>
-              <div class="thumb t2">PLM DAY</div>
-              <div class="news-body">
-                <strong>PLM Day 2026: Unity in Service</strong>
-                <p>Join us this November at the PLM Quadrangle!</p>
-              </div>
-              <time>Nov 7, 2026</time>
-            </li>
-            <li>
-              <div class="thumb t3"><svg><use href="#i-wifi"/></svg></div>
-              <div class="news-body">
-                <strong>Wi-Fi Maintenance Notice</strong>
-                <p>Campus Wi-Fi will be temporarily unavailable on Nov 12, 2026…</p>
-              </div>
-              <time>Nov 6, 2026</time>
-            </li>
-          </ul>
-        </section>
-
-        <div class="row-2">
-          <section class="card">
-            <div class="card-head">
-              <h3><svg><use href="#i-bolt"/></svg>Quick Access</h3>
-            </div>
-            <div class="quick">
-              <a href="#" class="q q1"><svg><use href="#i-megaphone"/></svg>Announcements</a>
-              <a href="Map.html" class="q q2"><svg><use href="#i-pin"/></svg>Campus Map</a>
-              <a href="#" class="q q3"><svg><use href="#i-chart"/></svg>Statistics</a>
-              <a href="#" class="q q4"><svg><use href="#i-wifi"/></svg>Wi-Fi Info</a>
-              <a href="#" class="q q5"><svg><use href="#i-box"/></svg>Lost &amp; Found</a>
-              <a href="#" class="q q6"><svg><use href="#i-bag"/></svg>Shop</a>
-              <a href="#" class="q q7"><svg><use href="#i-calendar"/></svg>Events</a>
-              <a href="#" class="q q8"><svg><use href="#i-users"/></svg>Student Services</a>
-            </div>
-          </section>
-
-          <section class="card">
-            <div class="card-head">
-              <h3><svg><use href="#i-calendar"/></svg>Upcoming Events</h3>
-              <a href="#" class="link">See All <svg><use href="#i-arrow"/></svg></a>
-            </div>
-            <div class="event">
-              <div class="event-img"></div>
-              <div>
-                <h4>PLM Day 2026</h4>
-                <p>Nov 21, 2026</p>
-                <p>PLM Quadrangle</p>
-                <button class="btn">View Details</button>
-              </div>
-            </div>
-          </section>
-        </div>
-      </div>
-
-      <div class="col-side">
-        <section class="card">
-          <div class="card-head">
-            <h3><svg><use href="#i-calendar"/></svg>My Schedule</h3>
-            <a href="#" class="link">See Calendar <svg><use href="#i-arrow"/></svg></a>
-          </div>
-          <ul class="sched">
-            <li class="d-blue"><strong>CS 101 – Data Structures</strong><span>8:00 AM – 10:00 AM | Room CS-201</span></li>
-            <li class="d-red"><strong>Math 102 – Calculus I</strong><span>1:00 PM – 3:00 PM | Room M-102</span></li>
-            <li class="d-amber"><strong>PE 2 – Physical Fitness</strong><span>4:00 PM – 6:00 PM | Gymnasium</span></li>
-          </ul>
-        </section>
-
-        <section class="card">
-          <div class="card-head">
-            <h3><svg><use href="#i-chart"/></svg>Wi-Fi Status</h3>
-            <span class="badge">Online</span>
-          </div>
-          <p class="signal-label">Strong Signal</p>
-          <div class="bar"><span style="width:68%"></span></div>
-        </section>
-
-        <section class="card">
-          <div class="card-head">
-            <h3><svg><use href="#i-pin"/></svg>Campus Map</h3>
-            <a href="Map.html" class="link">Open Map <svg><use href="#i-arrow"/></svg></a>
-          </div>
-          <div class="map">
-            <svg class="map-pin"><use href="#i-pin"/></svg>
-            <div class="zoom"><button aria-label="Zoom in">+</button><button aria-label="Zoom out">−</button></div>
-          </div>
-        </section>
-      </div>
-
+    <p class="lf-count" id="count" aria-live="polite"></p>
+    <section class="lf-grid" id="grid"></section>
+    <div class="lf-empty" id="empty" hidden>
+      <strong>No items match your search.</strong>
+      <span>Try different keywords, or report your lost item so others can help.</span>
     </div>
   </div>
 </div>
 
+<!-- Post / report dialog -->
+<dialog id="formDlg" class="dlg">
+  <form id="itemForm" method="dialog" novalidate>
+    <header class="dlg-head">
+      <h3 id="formTitle">Post Found Item</h3>
+      <button type="button" class="x" data-close aria-label="Close">×</button>
+    </header>
+    <div class="dlg-body">
+      <p class="hint" id="formHint"></p>
+      <label class="lf-field"><span>Item name *</span><input name="title" required maxlength="60" placeholder="e.g. Black umbrella"></label>
+      <div class="two">
+        <label class="lf-field"><span>Category *</span><select name="category" required></select></label>
+        <label class="lf-field"><span id="dateLabel">Date found *</span><input type="date" name="date" required></label>
+      </div>
+      <label class="lf-field"><span id="locLabel">Where was it found? *</span>
+        <select name="location" required></select>
+      </label>
+      <label class="lf-field"><span>Description *</span><textarea name="description" required maxlength="300" rows="3" placeholder="Color, brand, marks, what's inside… Leave out details only the owner would know."></textarea></label>
+      <label class="lf-field" id="keptWrap"><span>Where is it being kept? *</span><input name="keptAt" maxlength="80" placeholder="e.g. Security Office, Executive Bldg"></label>
+      <label class="lf-field"><span>Photo (optional)</span><input type="file" name="photo" accept="image/*"></label>
+      <label class="lf-field"><span>Your contact (email or student no.) *</span><input name="contact" required maxlength="80" placeholder="e.g. 2025-00123 or you@plm.edu.ph"></label>
+      <p class="err" id="formErr" role="alert" hidden></p>
+    </div>
+    <footer class="dlg-foot">
+      <button type="button" class="btn btn-ghost" data-close>Cancel</button>
+      <button type="submit" class="btn" id="formSubmit">Submit</button>
+    </footer>
+  </form>
+</dialog>
+
+<!-- Item details / claim dialog -->
+<dialog id="detailDlg" class="dlg dlg-wide">
+  <header class="dlg-head">
+    <h3 id="dTitle"></h3>
+    <button type="button" class="x" data-close aria-label="Close">×</button>
+  </header>
+  <div class="dlg-body" id="dBody"></div>
+  <footer class="dlg-foot" id="dFoot"></footer>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="LostFound.js"></script>
 </body>
 </html>
